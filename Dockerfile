@@ -18,6 +18,7 @@ php7.3-fpm php-xdebug php-memcache php-redis
 
 RUN apt install -y npm
 
+RUN sed -i "s/;pm.max_requests =.*/pm.max_requests = 500/" /etc/php/7.3/fpm/pool.d/www.conf
 RUN sed -i "s/listen = .*/listen = 9000/" /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN sed -i "s/error_reporting = .*/error_reporting = E_ALL | E_STRICT/" /etc/php/7.3/cli/php.ini
