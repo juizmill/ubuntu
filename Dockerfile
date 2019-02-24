@@ -52,7 +52,8 @@ xdebug.remote_enable = 1 \n\
 xdebug.remote_autostart = 1 \n\
 xdebug.idekey="VSCODE"'> /etc/php/7.3/cli/conf.d/20-xdebug.ini
 
+RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 
 EXPOSE 9000
-CMD ["php-fpm"]
+CMD ["php"]
