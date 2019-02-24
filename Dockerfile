@@ -16,7 +16,7 @@ php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-bcmath \
 php7.3-intl php7.3-imap php7.3-interbase php7.3-sqlite3 php7.3-soap php7.3-pgsql \
 php7.3-fpm php-xdebug
 
-RUN sed -i "s/listen =  .*/listen = 9000/" /etc/php/7.3/fpm/pool.d/www.conf
+RUN sed -i "s/listen = .*/listen = 9000/" /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN sed -i "s/error_reporting = .*/error_reporting = E_ALL | E_STRICT/" /etc/php/7.3/cli/php.ini
 RUN sed -i "s/display_errors = .*/display_errors = On/" /etc/php/7.3/cli/php.ini
@@ -51,6 +51,8 @@ xdebug.max_nesting_level=250 \n\
 xdebug.remote_enable = 1 \n\
 xdebug.remote_autostart = 1 \n\
 xdebug.idekey="VSCODE"'> /etc/php/7.3/cli/conf.d/20-xdebug.ini
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
