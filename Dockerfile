@@ -14,7 +14,7 @@ RUN apt-get -yq update
 RUN apt-get install -yq vim git net-tools iputils-ping php7.3 php-pear php7.3-curl php7.3-dev \
 php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-bcmath \
 php7.3-intl php7.3-imap php7.3-interbase php7.3-sqlite3 php7.3-soap php7.3-pgsql \
-php7.3-fpm php-xdebug
+php7.3-fpm php-xdebug php-memcache php-redis
 
 RUN sed -i "s/listen = .*/listen = 9000/" /etc/php/7.3/fpm/pool.d/www.conf
 
